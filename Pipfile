@@ -11,6 +11,7 @@ psycopg2-binary = "*"
 django-extensions = "*"
 djangorestframework = "*"
 python-dotenv = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
