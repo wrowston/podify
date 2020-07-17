@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { uploadCommonFile } from '../../firebase/firebase.js'
+// import { uploadCommonFile } from '../../firebase/firebase.js'
 
 export default class AllPodcast extends Component {
 
@@ -59,38 +59,38 @@ export default class AllPodcast extends Component {
         this.setState(newState)
     }
 
-    //code snippet provided by Brandon Moody
-    onFileSelect = async (evt) => {
-        const { isPicSelected = () => { } } = this.props
-        isPicSelected()
-        console.log('onFileSelect called, fileList=', evt.target.files[0])
-        if (evt.target.files[0] === null
-            || evt.target.files[0].length < 1) {
-            return;
-        }
-        // grab first image selected
-        const selectedImage = evt.target.files[0]
-        if (!selectedImage) {
-            return;
-        }
+    // //code snippet provided by Brandon Moody
+    // onFileSelect = async (evt) => {
+    //     const { isPicSelected = () => { } } = this.props
+    //     isPicSelected()
+    //     console.log('onFileSelect called, fileList=', evt.target.files[0])
+    //     if (evt.target.files[0] === null
+    //         || evt.target.files[0].length < 1) {
+    //         return;
+    //     }
+    //     // grab first image selected
+    //     const selectedImage = evt.target.files[0]
+    //     if (!selectedImage) {
+    //         return;
+    //     }
 
-        // try to upload image to firebase
-        try {
-            const uploadSnapshot = await uploadCommonFile(selectedImage)
-            // get  full url of image after it is uploaded
-            const downloadURL = await uploadSnapshot.ref.getDownloadURL()
+    //     // try to upload image to firebase
+    //     try {
+    //         const uploadSnapshot = await uploadCommonFile(selectedImage)
+    //         // get  full url of image after it is uploaded
+    //         const downloadURL = await uploadSnapshot.ref.getDownloadURL()
 
-            // lets add the new URL to the array
-            // const currentImageURls = this.props.imageURLs || []
-            // const newImageURLs = [...currentImageURls, downloadURL]
-            // lets called the passed function for parent
-            this.onUrlsChange(downloadURL);
-            console.log('downloadURL', downloadURL)
-        } catch (err) {
-            console.error('failed to upload image')
-            console.error(err)
-        }
-    }
+    //         // lets add the new URL to the array
+    //         // const currentImageURls = this.props.imageURLs || []
+    //         // const newImageURLs = [...currentImageURls, downloadURL]
+    //         // lets called the passed function for parent
+    //         this.onUrlsChange(downloadURL);
+    //         console.log('downloadURL', downloadURL)
+    //     } catch (err) {
+    //         console.error('failed to upload image')
+    //         console.error(err)
+    //     }
+    // }
 
     onChangePodcast = (evt) => {
         const newState = { ...this.state }

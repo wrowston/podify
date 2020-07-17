@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { uploadCommonFile } from '../../firebase/firebase.js'
+// import { uploadCommonFile } from '../../firebase/firebase.js'
 
 
 const moment = require('moment')
@@ -58,44 +58,44 @@ export default class AllEpisodes extends Component {
     }
 
 
-    // code snippet provided by Brandon Moody
-    onFileSelect = async (evt) => {
-        const { isPicSelected = () => { } } = this.props
-        isPicSelected()
-        console.log('onFileSelect called, fileList=', evt.target.files[0])
-        if (evt.target.files[0] === null
-            || evt.target.files[0].length < 1) {
-            return;
-        }
-        // grab first audio selected
-        const selectedAudio = evt.target.files[0]
-        if (!selectedAudio) {
-            return;
-        }
+    // // code snippet provided by Brandon Moody
+    // onFileSelect = async (evt) => {
+    //     const { isPicSelected = () => { } } = this.props
+    //     isPicSelected()
+    //     console.log('onFileSelect called, fileList=', evt.target.files[0])
+    //     if (evt.target.files[0] === null
+    //         || evt.target.files[0].length < 1) {
+    //         return;
+    //     }
+    //     // grab first audio selected
+    //     const selectedAudio = evt.target.files[0]
+    //     if (!selectedAudio) {
+    //         return;
+    //     }
 
-        // try to upload audio to firebase
-        try {
-            const uploadSnapshot = await uploadCommonFile(selectedAudio)
+    //     // try to upload audio to firebase
+    //     try {
+    //         const uploadSnapshot = await uploadCommonFile(selectedAudio)
 
-            // upload progress
-            const progress = (uploadSnapshot.bytesTransferred / uploadSnapshot.totalBytes) * 100
-            console.log('Upload is ' + progress + '% done')
-            this.getUploadProgress(progress)
+    //         // upload progress
+    //         const progress = (uploadSnapshot.bytesTransferred / uploadSnapshot.totalBytes) * 100
+    //         console.log('Upload is ' + progress + '% done')
+    //         this.getUploadProgress(progress)
 
-            // get  full url of audio after it is uploaded
-            const downloadURL = await uploadSnapshot.ref.getDownloadURL()
+    //         // get  full url of audio after it is uploaded
+    //         const downloadURL = await uploadSnapshot.ref.getDownloadURL()
 
-            // lets add the new URL to the array
-            // const currentAudioURls = this.props.audioURLs || []
-            // const newAudioURLs = [...currentAudioURls, downloadURL]
-            // lets called the passed function for parent
-            this.onUrlsChange(downloadURL)
-            console.log('downloadURL', downloadURL)
-        } catch (err) {
-            console.error('failed to upload audio')
-            console.error(err)
-        }
-    }
+    //         // lets add the new URL to the array
+    //         // const currentAudioURls = this.props.audioURLs || []
+    //         // const newAudioURLs = [...currentAudioURls, downloadURL]
+    //         // lets called the passed function for parent
+    //         this.onUrlsChange(downloadURL)
+    //         console.log('downloadURL', downloadURL)
+    //     } catch (err) {
+    //         console.error('failed to upload audio')
+    //         console.error(err)
+    //     }
+    // }
 
     onChangeEpisode = (evt) => {
         const newState = { ...this.state }
