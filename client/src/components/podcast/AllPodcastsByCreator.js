@@ -200,7 +200,7 @@ export default class AllPodcast extends Component {
                                     <div key={`t4n328on - ${index}`} className='podcast-wrapper'>
                                         <img src={podcast.imageUrl} alt='podcast cover art' height={200} width={200} className='podcast-image' />
                                         <div className='podcast-info-wrapper'>
-                                            <Link to={`/podcast/${podcast._id}`} className='podcast-name'><div>{podcast.name}</div></Link>
+                                            <Link to={`/podcast/${podcast.id}`} className='podcast-name'><div>{podcast.name}</div></Link>
                                             <div className='podcast-creator'>{podcast.creator}</div>
                                             <div className='podcast-info'>{podcast.genre}</div>
                                             <div className='podcast-info'>{podcast.description}</div>

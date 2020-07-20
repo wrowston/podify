@@ -129,7 +129,7 @@ export default class AllEpisodes extends Component {
                                 <tr key={`45745gwg - ${index}`} className='episode-table'>
                                     <td>
                                         <Link
-                                            to={`/episode/${episode._id}`}
+                                            to={`/episode/${episode.id}`}
                                             className='episode-name'>
                                             <div>{episode.name}</div>
                                         </Link>

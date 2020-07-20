@@ -13,8 +13,11 @@ export default class AllCreators extends Component {
     }
 
     getAllCreators = async () => {
+        const res = await axios.get('/api/v1/creator')
+        console.log(res.data)
         try {
             const res = await axios.get('/api/v1/creator')
+            console.log(res.data)
             const newState = { ...this.state }
             newState.allCreators = res.data
             this.setState(newState)
@@ -33,7 +36,7 @@ export default class AllCreators extends Component {
                         return (
                             <div key={`ht6wb645 - ${index}`}>
                                 <Link
-                                    to={`/creator/${creator._id}`}
+                                    to={`/creator/${creator.id}`}
                                     className="list-group-item list-group-item-action list-group-item-dark">
                                     <div>{creator.name}</div>
                                 </Link>

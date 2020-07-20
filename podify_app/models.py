@@ -13,7 +13,7 @@ class Creator(models.Model):
 class Podcast(models.Model):
     name = models.CharField(max_length=100)
     creator = models.ForeignKey(
-        Creator, on_delete=models.CASCADE, related_name='creator')
+        Creator, on_delete=models.CASCADE, related_name='podcasts')
     description = models.TextField()
     genre = models.CharField(max_length=100)
     image_url = models.TextField()
@@ -30,9 +30,10 @@ class Episode(models.Model):
     podcast = models.ForeignKey(
         Podcast,
         on_delete=models.CASCADE,
-        related_name='podcast',
-        default="",
-        editable=False)
+        related_name='episodes')
+    # ,
+    # default = "",
+    # editable = False
 
     def __str__(self):
         return f'{self.name} - {self.description}'
