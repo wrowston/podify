@@ -13,6 +13,7 @@ export default class SinglePodcast extends Component {
             genre: '',
             image: '',
             creatorId: '',
+            episodes: []
         },
         showEditForm: false,
         saveRedirect: false
@@ -122,7 +123,7 @@ export default class SinglePodcast extends Component {
                     </div>
                     : <div className='single-podcast-wrapper'>
                         <div className='image-name-creator-wrapper'>
-                            <img src={this.state.podcast.imageUrl} alt='podcast cover art' className='single-image' height={250} width={250} />
+                            <img src={this.state.podcast.image_url} alt='podcast cover art' className='single-image' height={250} width={250} />
                             <div className='podcast-name-wrapper'>
                                 <div className='single-name'>{this.state.podcast.name}</div>
                                 <Link
@@ -144,6 +145,7 @@ export default class SinglePodcast extends Component {
                             podcastId={this.props.match.params.podcastId}
                             showEditForm={this.state.showEditForm}
                             toggleEditForm={this.toggleEditForm}
+                            episodes={this.state.podcast.episodes}
                         />
                     </div>}
             </div>

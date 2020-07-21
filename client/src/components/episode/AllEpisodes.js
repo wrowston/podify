@@ -9,36 +9,27 @@ const moment = require('moment')
 export default class AllEpisodes extends Component {
 
     state = {
-        episode: {
-            name: '',
-            description: '',
-            podcastId: this.props.podcastId,
-            audioFile: '',
-            audioUrl: '',
-            dateUploaded: moment().format('LL')
-        },
-        allEpisodes: [],
         showUploadForm: false,
         play: false,
         uploadProgress: ''
     }
 
-    componentDidMount() {
-        this.getAllEpisodesByPodcastId()
-    }
+    // componentDidMount() {
+    //     this.getAllEpisodesByPodcastId()
+    // }
 
-    getAllEpisodesByPodcastId = async () => {
-        try {
-            const podcastId = this.props.podcastId
-            const res = await axios.get(`/api/v1/episode/podcast/${podcastId}`)
-            const newState = { ...this.state }
-            newState.allEpisodes = res.data
-            this.setState(newState)
-        } catch (error) {
-            console.log('Failed to get all episodes by podcast ID')
-            console.log(error)
-        }
-    }
+    // getAllEpisodesByPodcastId = async () => {
+    //     try {
+    //         const podcastId = this.props.podcastId
+    //         const res = await axios.get(`/api/v1/episode/podcast/${podcastId}`)
+    //         const newState = { ...this.state }
+    //         newState.allEpisodes = res.data
+    //         this.setState(newState)
+    //     } catch (error) {
+    //         console.log('Failed to get all episodes by podcast ID')
+    //         console.log(error)
+    //     }
+    // }
 
     toggleUploadForm = () => {
         const showUploadForm = !this.state.showUploadForm
@@ -124,7 +115,7 @@ export default class AllEpisodes extends Component {
                         <th scope="col">Audio</th>
                     </thead>
                     <tbody>
-                        {this.state.allEpisodes.map((episode, index) => {
+                        {this.props.episodes.map((episode, index) => {
                             return (
                                 <tr key={`45745gwg - ${index}`} className='episode-table'>
                                     <td>
@@ -134,10 +125,10 @@ export default class AllEpisodes extends Component {
                                             <div>{episode.name}</div>
                                         </Link>
                                     </td>
-                                    <td><div className='episode-info'>{episode.dateUploaded}</div></td>
+                                    <td><div className='episode-info'>{episode.date_uploaded}</div></td>
                                     <td>
                                         <audio controls
-                                            src={episode.audioUrl}
+                                            src={episode.audio_url}
                                             className='episode-audio'></audio>
                                     </td>
                                 </tr>
